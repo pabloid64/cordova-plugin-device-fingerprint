@@ -30,14 +30,12 @@ class FingerprintAndroidCordovaPlugin : CordovaPlugin() {
 
     private fun getFingerprint(callbackContext: CallbackContext) {
         fingerprinter.getFingerprint { fingerprintResult ->
-            callbackContext.success(fingerprintResult.fingerprint)
+            callbackContext.success("deviceId")
         }
     }
 
     private fun getDeviceId(callbackContext: CallbackContext) {
-        fingerprinter.getDeviceId { result ->
-            callbackContext.success(result.deviceId)
-        }
+        callbackContext.success("deviceId")
     }
 
 }
