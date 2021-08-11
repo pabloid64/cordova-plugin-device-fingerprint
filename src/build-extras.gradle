@@ -1,0 +1,18 @@
+allprojects {	
+  repositories {
+maven { url 'https://jitpack.io' }	
+}}
+
+android {
+    sourceSets {
+        main.java {
+            srcDirs += 'src/main/kotlin'
+        }
+    }
+}
+
+dependencies {
+  implementation "org.jetbrains.kotlin:kotlin-stdlib:1.4.30"
+  implementation "com.github.fingerprintjs:fingerprint-android:1.2"
+}
+

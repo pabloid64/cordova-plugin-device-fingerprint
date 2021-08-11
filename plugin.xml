@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<plugin 
+  xmlns="http://apache.org/cordova/ns/plugins/1.0"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  id="cordova-plugin-device-fingerprint"
+  version="1.0.0">
+
+  <name>Hello Kotlin</name>
+
+  <engines>
+    <engine name="cordova" version=">=7"/>
+  </engines>
+
+  <author email="chernyshovsup@gmail.com">Pavel Chernyshov</author>
+
+  <js-module src="www/fingerprint.js" name="FingerPrint">
+    <clobbers target="fingerprint" />
+  </js-module>
+
+  <platform name="android">
+      <config-file target="res/xml/config.xml" parent="/*">
+      <feature name="FingerPrint">
+        <param name="android-package" value="fingerprint.FingerPrint"/>
+      </feature>
+    </config-file>
+
+    <source-file src="src/FingerPrint.kt" target-dir="app/src/main/kotlin/fingerprint"/>
+    <source-file src="src/build-extras.gradle" target-dir="."/>
+  </platform>
+</plugin>
