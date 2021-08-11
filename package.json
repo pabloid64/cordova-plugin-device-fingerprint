@@ -1,0 +1,31 @@
+{
+  "name": "cordova-plugin-device-fingerprint",
+  "version": "1.0.0",
+  "description": "android-device-fingerprint",
+  "cordova": {
+    "id": "cordova-plugin-device-fingerprint",
+    "platforms": [
+      "android"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pabloid64/cordova-plugin-device-fingerprint.git"
+  },
+  "keywords": [
+    "ecosystem:cordova",
+    "cordova-android"
+  ],
+  "engines": [
+    {
+      "name": "cordova",
+      "version": ">=7"
+    }
+  ],
+  "author": "Pavel Chernyshov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pabloid64/cordova-plugin-device-fingerprint/issues"
+  },
+  "homepage": "https://github.com/pabloid64/cordova-plugin-device-fingerprint#readme"
+}
