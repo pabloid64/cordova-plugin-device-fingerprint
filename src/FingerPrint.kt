@@ -1,41 +1,54 @@
-package org.apache.cordova.plugin
+package fingerprint
 
-import com.fingerprintjs.android.fingerprint.FingerprinterFactory
-import com.fingerprintjs.android.fingerprint.Configuration
-import org.apache.cordova.CallbackContext
-import org.apache.cordova.CordovaPlugin
+import android.util.Log
+import org.apache.cordova.*
 import org.json.JSONArray
 import org.json.JSONException
 
-class FingerprintAndroidCordovaPlugin : CordovaPlugin() {
-
-    val fingerprinter = FingerprinterFactory.getInstance(
-        cordova.getActivity().applicationContext,
-        Configuration(version = 3)
-    )
+class FingerPrint : CordovaPlugin() {
+    lateinit var context: CallbackContext
 
     @Throws(JSONException::class)
-    fun execute(action: String, args: JSONArray, callbackContext: CallbackContext): Boolean {
-        if (action == "fingerprint") {
-            getFingerprint(callbackContext)
-            return true
-        }
-        if (action == "deviceId") {
-            getDeviceId(callbackContext)
-            return true
+    override fun execute(action: String, data: JSONArray, callbackContext: CallbackContext): Boolean {
+        context = callbackContext
+        var result = true
+        try {
+            if (action == "fingerprint") {
+                val output = "Kotlin says"
+                callbackContext.success(output)
+            } else {
+                handleError("Invalid action")
+                result = false
+            }
+        } catch (e: Exception) {
+            handleException(e)
+            result = false
         }
 
-        return false
+        return result
     }
 
-    private fun getFingerprint(callbackContext: CallbackContext) {
-        fingerprinter.getFingerprint { fingerprintResult ->
-            callbackContext.success("deviceId")
+    /**
+     * Handles an error while executing a plugin API method.
+     * Calls the registered Javascript plugin error handler callback.
+     *
+     * @param errorMsg Error message to pass to the JS error handler
+     */
+    private fun handleError(errorMsg: String) {
+        try {
+            Log.e(TAG, errorMsg)
+            context.error(errorMsg)
+        } catch (e: Exception) {
+            Log.e(TAG, e.toString())
         }
     }
 
-    private fun getDeviceId(callbackContext: CallbackContext) {
-        callbackContext.success("deviceId")
+    private fun handleException(exception: Exception) {
+        handleError(exception.toString())
     }
 
+    companion object {
+
+        protected val TAG = "FingerPrint"
+    }
 }
