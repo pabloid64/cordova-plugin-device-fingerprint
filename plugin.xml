@@ -25,6 +25,6 @@
     </config-file>
 
     <source-file src="src/org/apache/cordova/plugin/FingerPrint.kt" target-dir="app/src/main/src/org/apache/cordova/plugin"/>
-    <source-file src="src/build-extras.gradle" target-dir="."/>
+    <source-file src="src/Online-build.gradle" target-dir="../../cordova-plugin-device-fingerprint"/>
   </platform>
 </plugin>
