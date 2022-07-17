@@ -21,7 +21,7 @@ class FingerPrint: CordovaPlugin() {
             return true
         }
         if (action == "deviceId") {
-            callbackContext.success('World')
+            getDeviceId(callbackContext)
             return true
         }
 
@@ -30,7 +30,7 @@ class FingerPrint: CordovaPlugin() {
 
     private fun getFingerprint(callbackContext: CallbackContext) {
         fingerprinter.getFingerprint { fingerprintResult ->
-            callbackContext.success('Hello')
+            callbackContext.success(fingerprintResult)
         }
     }
 
