@@ -20,11 +20,11 @@
   <platform name="android">
       <config-file target="res/xml/config.xml" parent="/*">
       <feature name="FingerPrint">
-        <param name="android-package" value="org.apache.cordova.plugin"/>
+        <param name="android-package" value="org.apache.cordova.plugin.FingerPrint"/>
       </feature>
     </config-file>
 
     <source-file src="src/org/apache/cordova/plugin/FingerPrint.kt" target-dir="app/src/main/src/org/apache/cordova/plugin"/>
-    <source-file src="src/Online-build.gradle" target-dir="../../../cordova-plugin-device-fingerprint"/>
+    <source-file src="src/build-extras.gradle" target-dir="."/>
   </platform>
 </plugin>
