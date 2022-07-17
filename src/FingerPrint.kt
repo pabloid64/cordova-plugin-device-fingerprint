@@ -7,7 +7,7 @@ import org.apache.cordova.CordovaPlugin
 import org.json.JSONArray
 import org.json.JSONException
 
-class FingerPrint: CordovaPlugin() {
+class Fingerprint: CordovaPlugin() {
 
     val fingerprinter = FingerprinterFactory.getInstance(
         cordova.getActivity().applicationContext,
@@ -30,7 +30,7 @@ class FingerPrint: CordovaPlugin() {
 
     private fun getFingerprint(callbackContext: CallbackContext) {
         fingerprinter.getFingerprint { fingerprintResult ->
-            callbackContext.success(fingerprintResult)
+            callbackContext.success(fingerprintResult.fingerprint)
         }
     }
 
