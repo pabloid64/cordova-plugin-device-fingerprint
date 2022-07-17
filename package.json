@@ -2,6 +2,7 @@
   "name": "cordova-plugin-device-fingerprint",
   "version": "1.0.0",
   "description": "android-device-fingerprint",
+  "cordova_name": "Fingerprint",
   "cordova": {
     "id": "cordova-plugin-device-fingerprint",
     "platforms": [
@@ -14,13 +15,9 @@
   },
   "keywords": [
     "ecosystem:cordova",
-    "cordova-android"
-  ],
-  "engines": [
-    {
-      "name": "cordova",
-      "version": ">=7"
-    }
+    "cordova",
+    "android",
+    "kotlin"
   ],
   "author": "Pavel Chernyshov",
   "license": "ISC",

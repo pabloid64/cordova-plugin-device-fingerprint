@@ -1,54 +1,42 @@
 package fingerprint
 
-import android.util.Log
-import org.apache.cordova.*
+import com.fingerprintjs.android.fingerprint.FingerprinterFactory
+import com.fingerprintjs.android.fingerprint.Configuration
+import org.apache.cordova.CallbackContext
+import org.apache.cordova.CordovaPlugin
 import org.json.JSONArray
 import org.json.JSONException
 
-class FingerPrint : CordovaPlugin() {
-    lateinit var context: CallbackContext
+class FingerPrint: CordovaPlugin() {
+
+    val fingerprinter = FingerprinterFactory.getInstance(
+        cordova.getActivity().applicationContext,
+        Configuration(version = 3)
+    )
 
     @Throws(JSONException::class)
-    override fun execute(action: String, data: JSONArray, callbackContext: CallbackContext): Boolean {
-        context = callbackContext
-        var result = true
-        try {
-            if (action == "fingerprint") {
-                val output = "Kotlin says"
-                callbackContext.success(output)
-            } else {
-                handleError("Invalid action")
-                result = false
-            }
-        } catch (e: Exception) {
-            handleException(e)
-            result = false
+    override fun execute(action: String, args: JSONArray, callbackContext: CallbackContext): Boolean {
+        if (action == "fingerprint") {
+            getFingerprint(callbackContext)
+            return true
+        }
+        if (action == "deviceId") {
+            callbackContext.success('World')
+            return true
         }
 
-        return result
+        return false
     }
 
-    /**
-     * Handles an error while executing a plugin API method.
-     * Calls the registered Javascript plugin error handler callback.
-     *
-     * @param errorMsg Error message to pass to the JS error handler
-     */
-    private fun handleError(errorMsg: String) {
-        try {
-            Log.e(TAG, errorMsg)
-            context.error(errorMsg)
-        } catch (e: Exception) {
-            Log.e(TAG, e.toString())
+    private fun getFingerprint(callbackContext: CallbackContext) {
+        fingerprinter.getFingerprint { fingerprintResult ->
+            callbackContext.success('Hello')
         }
     }
 
-    private fun handleException(exception: Exception) {
-        handleError(exception.toString())
-    }
-
-    companion object {
-
-        protected val TAG = "FingerPrint"
+    private fun getDeviceId(callbackContext: CallbackContext) {
+        fingerprinter.getDeviceId { result ->
+            callbackContext.success(result.deviceId)
+        }
     }
 }

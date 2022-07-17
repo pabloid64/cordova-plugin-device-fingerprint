@@ -5,7 +5,7 @@
   id="cordova-plugin-device-fingerprint"
   version="1.0.0">
 
-  <name>Hello Kotlin</name>
+  <name>FingerPrint</name>
 
   <engines>
     <engine name="cordova" version=">=7"/>
