@@ -21,7 +21,8 @@ class FingerPrint: CordovaPlugin() {
             return true
         }
         if (action == "deviceId") {
-            callbackContext.success('World')
+            val output = "Kotlin says"
+            callbackContext.success(output)
             return true
         }
 
@@ -30,7 +31,8 @@ class FingerPrint: CordovaPlugin() {
 
     private fun getFingerprint(callbackContext: CallbackContext) {
         fingerprinter.getFingerprint { fingerprintResult ->
-            callbackContext.success('Hello')
+            val output = "Kotlin says"
+            callbackContext.success(output)
         }
     }
 
