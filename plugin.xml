@@ -24,6 +24,7 @@
       </feature>
     </config-file>
 
+    <framework src="com.github.fingerprintjs:fingerprint-android:1.2.1" />
     <source-file src="src/FingerPrint.kt" target-dir="app/src/main/kotlin/fingerprint"/>
     <source-file src="src/build-extras.gradle" target-dir="."/>
   </platform>
